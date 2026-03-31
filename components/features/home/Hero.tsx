@@ -8,21 +8,23 @@ export function Hero() {
     return (
         <Section className="grid lg:grid-cols-2 gap-8 items-center min-h-[calc(100vh-4rem)]">
             <div className="flex flex-col items-center lg:items-start justify-center space-y-8">
-                <div className="space-y-4">
-                    <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl bg-clip-text text-transparent bg-gradient-to-r from-foreground to-foreground/70">
-                        Building Exceptional <br className="hidden md:inline" />
-                        Digital Experiences
+                <div className="space-y-6">
+                    <div className="text-sm font-semibold uppercase tracking-widest text-muted-foreground">
+                        Simple Developer & Designer
+                    </div>
+                    <h1 className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-black tracking-tighter leading-none">
+                        Simple<br />
+                        Dev.
                     </h1>
-                    <p className="max-w-[700px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                        I'm a Full Stack Developer specializing in building (and occasionally designing) simple, beautiful, and intuitive interfaces.
+                    <p className="max-w-150 text-muted-foreground text-lg md:text-xl">
+                        Building beautiful digital experiences with modern technologies and clean code.
                     </p>
                 </div>
 
                 <div className="flex flex-col sm:flex-row gap-4 w-full">
                     <Link href="/projects">
-                        <Button size="lg" className="group w-full lg:w-auto">
-                            Check out my work
-                            <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                        <Button size="lg" className="w-full lg:w-auto">
+                            View Work
                         </Button>
                     </Link>
                     <Link href="/contact">
@@ -32,30 +34,30 @@ export function Hero() {
                     </Link>
                 </div>
 
-                <div className="flex items-center gap-4 text-muted-foreground">
-                    <Link href="https://github.com" target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors">
+                <div className="flex items-center gap-6 text-muted-foreground">
+                    <Link href="https://github.com/Krodogas" target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors">
                         <Github className="h-6 w-6" />
                         <span className="sr-only">GitHub</span>
                     </Link>
-                    <Link href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors">
+                    <Link href="https://www.instagram.com/jpil2.0?igsh=NXFoMGVscTdjaWU2" target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors">
                         <Linkedin className="h-6 w-6" />
                         <span className="sr-only">LinkedIn</span>
                     </Link>
-                    <Link href="mailto:hello@example.com" className="hover:text-foreground transition-colors">
-                        <Mail className="h-6 w-6" />
-                        <span className="sr-only">Email</span>
-                    </Link>
+
                 </div>
             </div>
 
-            <div className="flex justify-center items-center">
-                <Image
-                    src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                    alt="Coding Environment"
-                    width={500}
-                    height={500}
-                    className="rounded-2xl shadow-2xl object-cover w-full max-w-[500px] aspect-square transform rotate-3 hover:rotate-0 transition-transform duration-500"
-                />
+            <div className="hidden lg:flex justify-center items-center">
+                <div className="w-full max-w-125 aspect-square bg-muted border-2 border-dashed border-muted-foreground/30 rounded-lg flex flex-col items-center justify-center overflow-hidden">
+                    <Image
+                        src="/hero-image.jpg"
+                        alt="Creative Developer"
+                        width={500}
+                        height={500}
+                        loading="eager"
+                        className="rounded-lg object-cover w-full h-full"
+                    />
+                </div>
             </div>
         </Section>
     );

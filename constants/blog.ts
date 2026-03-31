@@ -7,6 +7,7 @@ export type BlogPost = {
   category: string[];
   date: string;
   author: string;
+  thumbnailColor: string;
 };
 
 export type BlogCategory = {
@@ -33,6 +34,7 @@ export const BLOG_POSTS: BlogPost[] = [
     category: ["tech", "nextjs"],
     date: "2025-02-01",
     author: "Jane Doe",
+    thumbnailColor: "#3B82F6",
   },
   {
     id: "2",
@@ -43,6 +45,7 @@ export const BLOG_POSTS: BlogPost[] = [
     category: ["tech", "react"],
     date: "2025-02-03",
     author: "John Smith",
+    thumbnailColor: "#06B6D4",
   },
   {
     id: "3",
@@ -53,6 +56,7 @@ export const BLOG_POSTS: BlogPost[] = [
     category: ["design"],
     date: "2025-02-05",
     author: "Jane Doe",
+    thumbnailColor: "#F97316",
   },
   {
     id: "4",
@@ -63,6 +67,7 @@ export const BLOG_POSTS: BlogPost[] = [
     category: ["life", "tech"],
     date: "2025-02-06",
     author: "John Smith",
+    thumbnailColor: "#10B981",
   },
   {
     id: "5",
@@ -73,5 +78,6 @@ export const BLOG_POSTS: BlogPost[] = [
     category: ["tech", "nextjs"],
     date: "2025-02-07",
     author: "Jane Doe",
+    thumbnailColor: "#8B5CF6",
   },
 ];

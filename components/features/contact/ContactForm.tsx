@@ -20,7 +20,6 @@ import { toast } from "sonner";
 const formSchema = z.object({
 	name: z.string().min(2, { message: "Name must be at least 2 characters." }),
 	email: z.string().email({ message: "Invalid email address." }),
-	subject: z.string().min(5, { message: "Subject must be at least 5 characters." }),
 	message: z.string().min(10, { message: "Message must be at least 10 characters." }).max(500, { message: "Message must be at most 500 characters." }),
 });
 
@@ -32,7 +31,6 @@ export function ContactForm() {
 		defaultValues: {
 			name: "",
 			email: "",
-			subject: "",
 			message: "",
 			},
 		});
@@ -46,135 +44,124 @@ export function ContactForm() {
 
 	return (
 		<Section className="min-h-screen">
-			<div className="grid lg:grid-cols-2 lg:gap-24 gap-12 items-center">
+			<div className="grid lg:grid-cols-2 lg:gap-24 gap-12 items-start pt-8">
 				<div className="space-y-6">
 					<h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl">
-						Let's Work Together
+						Let's Connect
 					</h1>
-					<p className="text-muted-foreground md:text-xl/relaxed">
-						Have a project in mind or just want to chat? Fill out the form or reach out directly. I'm always open to discussing new projects, creative ideas, or opportunities to be part of your visions.
+					<p className="text-muted-foreground text-lg md:text-xl">
+						Have a project in mind or just want to say hi? Feel free to reach out! I'm always open to discussing new ideas and opportunities.
 					</p>
 
-					<div className="space-y-4 pt-4">
-						<div className="flex items-center gap-3">
-							<div className="h-10 w-10 flex items-center justify-center rounded-full bg-primary/10 text-primary">
-								<Send className="h-5 w-5" />
+					<div className="space-y-6 pt-8">
+						<div className="flex items-start gap-4">
+							<div className="mt-1">
+								<p className="font-semibold text-foreground">Email</p>
+								<p className="text-muted-foreground">gasolina.krodo@gmail.com</p>
 							</div>
+						</div>
+						<div className="flex items-start gap-4">
 							<div>
-								<p className="font-medium">Email</p>
-								<p className="text-muted-foreground">hello@example.com</p>
+								<p className="font-semibold text-foreground">GitHub</p>
+								<p className="text-muted-foreground">@Krodogas</p>
 							</div>
 						</div>
 					</div>
 				</div>
 
-				<Card className="w-full">
-					<CardHeader>
-						<CardTitle>Contact Me</CardTitle>
-						<CardDescription>
-							Fill out the form below to send me a message.
-						</CardDescription>
-					</CardHeader>
-					<CardContent>
-						<form id="contact-form" onSubmit={form.handleSubmit(onSubmit)}>
-							<FieldGroup	>
-								<div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-									<Controller
-										name="name"
-										control={form.control}
-										render={({ field, fieldState }) => (
-											<Field data-invalid={fieldState.invalid}>
-												<FieldLabel htmlFor="name">Name</FieldLabel>
-												<Input
-													{...field}
-													id="name"
-													aria-invalid={fieldState.invalid}
-													placeholder="John Doe"
-													autoComplete="name"
-												/>
-												{fieldState.invalid && (
-													<FieldError errors={[fieldState.error]} />
-												)}
-											</Field>
+				<div className="w-full bg-muted/30 p-8 rounded-lg border border-border">
+					<h3 className="text-lg font-semibold text-foreground mb-6">Send me a message</h3>
+					<form id="contact-form" onSubmit={form.handleSubmit(onSubmit)}>
+						<FieldGroup className="space-y-6">
+							<Controller
+								name="name"
+								control={form.control}
+								render={({ field, fieldState }) => (
+									<Field data-invalid={fieldState.invalid}>
+										<FieldLabel htmlFor="name">Name</FieldLabel>
+										<Input
+											{...field}
+											id="name"
+											aria-invalid={fieldState.invalid}
+											placeholder="Enter your name"
+											autoComplete="name"
+										/>
+										{fieldState.invalid && (
+											<FieldError errors={[fieldState.error]} />
 										)}
-									/>
-									<Controller
-										name="email"
-										control={form.control}
-										render={({ field, fieldState }) => (
-											<Field data-invalid={fieldState.invalid}>
-												<FieldLabel htmlFor="email">Email</FieldLabel>
-												<Input
-													{...field}
-													id="email"
-													type="email"
-													aria-invalid={fieldState.invalid}
-													placeholder="john@example.com"
-													autoComplete="email"
-												/>
-												{fieldState.invalid && (
-													<FieldError errors={[fieldState.error]} />
-												)}
-											</Field>
-										)}
-									/>
-								</div>
+									</Field>
+								)}
+							/>
 
-								<Controller
-									name="subject"
-									control={form.control}
-									render={({ field, fieldState }) => (
-										<Field data-invalid={fieldState.invalid}>
-											<FieldLabel htmlFor="subject">Subject</FieldLabel>
-											<Input
+							<Controller
+								name="email"
+								control={form.control}
+								render={({ field, fieldState }) => (
+									<Field data-invalid={fieldState.invalid}>
+										<FieldLabel htmlFor="email">Email</FieldLabel>
+										<Input
+											{...field}
+											id="email"
+											type="email"
+											aria-invalid={fieldState.invalid}
+											placeholder="Enter your email"
+											autoComplete="email"
+										/>
+										{fieldState.invalid && (
+											<FieldError errors={[fieldState.error]} />
+										)}
+									</Field>
+								)}
+							/>
+
+							<Controller
+								name="message"
+								control={form.control}
+								render={({ field, fieldState }) => (
+									<Field data-invalid={fieldState.invalid}>
+										<FieldLabel htmlFor="message">Message</FieldLabel>
+										<InputGroup>
+											<InputGroupTextarea
 												{...field}
-												id="subject"
+												id="message"
+												placeholder="Your message"
+												rows={5}
+												className="min-h-24 resize-none"
 												aria-invalid={fieldState.invalid}
-												placeholder="Project Inquiry"
 											/>
-											{fieldState.invalid && (
-												<FieldError errors={[fieldState.error]} />
-											)}
-										</Field>
-									)}
-								/>
+											<InputGroupAddon align="block-end">
+												<InputGroupText className="tabular-nums text-xs">
+													{field.value.length}/500
+												</InputGroupText>
+											</InputGroupAddon>
+										</InputGroup>
+										{fieldState.invalid && (
+											<FieldError errors={[fieldState.error]} />
+										)}
+									</Field>
+								)}
+							/>
 
-								<Controller
-									name="message"
-									control={form.control}
-									render={({ field, fieldState }) => (
-										<Field data-invalid={fieldState.invalid}>
-											<FieldLabel htmlFor="message">Message</FieldLabel>
-											<InputGroup>
-												<InputGroupTextarea
-													{...field}
-													id="message"
-													placeholder="Tell me about your project..."
-													rows={6}
-													className="min-h-24 resize-none"
-													aria-invalid={fieldState.invalid}
-												/>
-												<InputGroupAddon align="block-end">
-													<InputGroupText className="tabular-nums">
-														{field.value.length}/500 characters
-													</InputGroupText>
-												</InputGroupAddon>
-											</InputGroup>
-											{fieldState.invalid && (
-												<FieldError errors={[fieldState.error]} />
-											)}
-										</Field>
+							<Button 
+								type="submit" 
+								form="contact-form" 
+								className="w-full group relative overflow-hidden bg-foreground text-background hover:bg-foreground/90 font-semibold py-6" 
+								disabled={form.formState.isSubmitting}
+							>
+								<span className="flex items-center justify-center gap-2">
+									{form.formState.isSubmitting ? (
+										<>Sending...</>
+									) : (
+										<>
+											Send Message
+											<Send className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+										</>
 									)}
-								/>
-							</FieldGroup>
-						</form>
-					</CardContent>
-					<CardFooter>
-						<Button type="submit" form="contact-form" className="w-full" size="lg" disabled={form.formState.isSubmitting}>
-							{form.formState.isSubmitting ? "Sending..." : "Send Message"}
-						</Button>
-					</CardFooter>
-				</Card>
+								</span>
+							</Button>
+						</FieldGroup>
+					</form>
+				</div>
 			</div>
 		</Section>
 	);

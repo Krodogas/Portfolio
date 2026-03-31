@@ -3,15 +3,15 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Home, Briefcase, BookOpen, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/common/ThemeToggle";
 
 const navLinks = [
-  { href: "/", label: "Home" },
-  { href: "/about", label: "About" },
-  { href: "/projects", label: "Projects" },
-  { href: "/blog", label: "Blog" },
+  { href: "/", label: "HOME", icon: Home },
+  { href: "/projects", label: "PROJECTS", icon: Briefcase },
+  { href: "/blog", label: "BLOGS", icon: BookOpen },
+  { href: "/contact", label: "CONTACT", icon: Mail },
 ] as const;
 
 export function Header() {
@@ -21,39 +21,46 @@ export function Header() {
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border bg-background">
       {/* Bar: Logo + nav + ThemeToggle + Menu — always on top, solid background */}
-      <div className="relative z-10 container mx-auto flex h-14 items-center justify-between gap-4 bg-background px-4 sm:px-6">
-        <Link href="/" className="font-bold text-2xl text-foreground shrink-0">
-          Portfolio
+      <div className="relative z-10 container mx-auto flex h-28 items-center justify-between gap-4 bg-background px-4 sm:px-6">
+        {/* Logo on left */}
+        <Link href="/" className="flex items-center gap-2 font-bold text-xl text-foreground shrink-0">
+          <div className="w-14 h-14 bg-foreground text-background flex items-center justify-center rounded-full font-bold text-base">
+            JAB
+          </div>
+          <div className="flex flex-col">
+            <span className="text-xs text-muted-foreground">JEFEL A. BAYUBAY</span>
+          </div>
         </Link>
 
-        <nav className="hidden md:flex items-center gap-2 lg:gap-4">
-          <ul className="flex items-center gap-2 lg:gap-4">
-            {navLinks.map(({ href, label }) => {
-              const isActive = pathname === href;
-              return (
-                <li key={href}>
-                  <Link
-                    href={href}
-                    className={`rounded-md px-2 py-1.5 text-sm transition-colors hover:bg-accent hover:text-accent-foreground ${isActive
-                      ? "bg-accent text-accent-foreground font-medium"
-                      : "text-muted-foreground"
-                      }`}
-                  >
-                    {label}
-                  </Link>
-                </li>
-              );
-            })}
-          </ul>
-        </nav>
+        {/* Navigation and controls on right */}
+        <div className="flex items-center gap-6 ml-auto">
+          {/* Desktop Navigation */}
+          <nav className="hidden md:flex items-center gap-8">
+            <ul className="flex items-center gap-8">
+              {navLinks.map(({ href, label, icon: Icon }) => {
+                const isActive = pathname === href;
+                return (
+                  <li key={href}>
+                    <Link
+                      href={href}
+                      className={`flex items-center gap-2 text-base transition-colors ${isActive
+                        ? "text-foreground font-medium"
+                        : "text-muted-foreground hover:text-foreground"
+                        }`}
+                    >
+                      <Icon className="h-4 w-4" />
+                      {label}
+                    </Link>
+                  </li>
+                );
+              })}
+            </ul>
+          </nav>
 
-        <div className="flex shrink-0 items-center gap-2">
+          {/* Theme Toggle */}
           <ThemeToggle />
-          <Link href="/contact">
-            <Button size="sm" className="hidden sm:inline-flex">
-              Contact
-            </Button>
-          </Link>
+
+          {/* Mobile Menu Button */}
           <Button
             variant="ghost"
             size="icon"
@@ -81,18 +88,19 @@ export function Header() {
         <div className="md:hidden relative z-10 border-t border-border bg-background">
           <nav className="container mx-auto px-4 py-4">
             <ul className="flex flex-col gap-1">
-              {navLinks.map(({ href, label }) => {
+              {navLinks.map(({ href, label, icon: Icon }) => {
                 const isActive = pathname === href;
                 return (
                   <li key={href}>
                     <Link
                       href={href}
                       onClick={() => setOpen(false)}
-                      className={`block rounded-md px-3 py-2.5 text-sm transition-colors hover:bg-accent hover:text-accent-foreground ${isActive
+                      className={`flex items-center gap-2 rounded-md px-3 py-2.5 text-sm transition-colors hover:bg-accent hover:text-accent-foreground ${isActive
                         ? "bg-accent text-accent-foreground"
                         : "text-muted-foreground"
                         }`}
                     >
+                      <Icon className="h-4 w-4" />
                       {label}
                     </Link>
                   </li>

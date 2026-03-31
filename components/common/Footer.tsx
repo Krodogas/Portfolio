@@ -1,40 +1,36 @@
 import Link from "next/link";
+import { Github, Instagram } from "lucide-react";
 
 const quickLinks = [
   { href: "/", label: "Home" },
-  { href: "/about", label: "About" },
   { href: "/projects", label: "Projects" },
-  { href: "/blog", label: "Blog" },
+  { href: "/blog", label: "Blogs" },
+  { href: "/contact", label: "Contact" },
 ] as const;
 
-const blogLinks = [
-  { href: "/blog", label: "All posts" },
-  { href: "/blog/category/tech", label: "Tech" },
-  { href: "/blog/category/design", label: "Design" },
-] as const;
-
-const contactLinks = [
-  { href: "tel:123123", label: "Phone: 123123" },
-  { href: "mailto:test@gmail.com", label: "Email" },
-  { href: "#", label: "Github" },
+const socialLinks = [
+  { href: "https://github.com/Krodogas", icon: Github, label: "GitHub" },
+  { href: "https://www.instagram.com/jpil2.0?igsh=NXFoMGVscTdjaWU2", icon: Instagram, label: "Instagram" },
 ] as const;
 
 export function Footer() {
   return (
-    <footer className="w-full border-t border-border bg-muted/30">
-      <div className="container mx-auto px-4 sm:px-6 py-8 sm:py-10">
-        <div className="grid grid-cols-2 gap-8 lg:grid-cols-4">
+    <footer className="w-full border-t border-border bg-background">
+      <div className="container mx-auto px-4 sm:px-6 py-12 sm:py-16">
+        <div className="grid grid-cols-1 gap-12 md:grid-cols-3 mb-8">
           {/* Brand */}
-          <div className="space-y-2">
-            <Link href="/" className="font-semibold text-foreground">
-              Portfolio
-            </Link>
-            <p className="text-sm text-muted-foreground">Cebu, City</p>
+          <div>
+            <div className="flex items-center gap-2 mb-3">
+              <div className="w-6 h-6 bg-foreground text-background flex items-center justify-center rounded-full font-bold text-xs">
+                JAB
+              </div>
+            </div>
+            <p className="text-sm text-muted-foreground">Building beautiful digital experiences.</p>
           </div>
 
           {/* Quick links */}
           <div>
-            <h3 className="mb-3 text-sm font-medium text-foreground">Quick links</h3>
+            <h3 className="mb-4 font-semibold text-foreground">Quick Links</h3>
             <ul className="space-y-2">
               {quickLinks.map(({ href, label }) => (
                 <li key={href}>
@@ -49,39 +45,31 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Blog */}
+          {/* Socials */}
           <div>
-            <h3 className="mb-3 text-sm font-medium text-foreground">Blog</h3>
-            <ul className="space-y-2">
-              {blogLinks.map(({ href, label }) => (
-                <li key={href}>
-                  <Link
-                    href={href}
-                    className="text-sm text-muted-foreground transition-colors hover:text-foreground"
-                  >
-                    {label}
-                  </Link>
-                </li>
+            <h3 className="mb-4 font-semibold text-foreground">Follow Me</h3>
+            <div className="flex items-center gap-4">
+              {socialLinks.map(({ href, icon: Icon, label }) => (
+                <Link
+                  key={label}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-muted-foreground hover:text-foreground transition-colors"
+                  aria-label={label}
+                >
+                  <Icon className="h-5 w-5" />
+                </Link>
               ))}
-            </ul>
+            </div>
           </div>
+        </div>
 
-          {/* Contact */}
-          <div>
-            <h3 className="mb-3 text-sm font-medium text-foreground">Contact</h3>
-            <ul className="space-y-2">
-              {contactLinks.map(({ href, label }) => (
-                <li key={label}>
-                  <Link
-                    href={href}
-                    className="text-sm text-muted-foreground transition-colors hover:text-foreground"
-                  >
-                    {label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
+        {/* Divider */}
+        <div className="border-t border-border pt-8">
+          <p className="text-center text-sm text-muted-foreground">
+            © 2026 Jefel A. Bayubay. All rights reserved.
+          </p>
         </div>
       </div>
     </footer>

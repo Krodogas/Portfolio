@@ -27,7 +27,12 @@ export function ProjectList() {
 
     return (
         <Section className="space-y-12 min-h-screen">
-            <SectionHeading title="All Projects" description="A collection of projects I've built, ranging from web applications to mobile apps and more." />
+            <div className="space-y-4">
+                <div className="text-xs font-semibold uppercase tracking-widest text-muted-foreground bg-muted w-fit px-3 py-1 rounded">
+                    Section: Projects Header
+                </div>
+                <SectionHeading title="Selected Works" description="A brief overview of my project portfolio." />
+            </div>
             
             <div className="flex flex-col md:flex-row gap-4 items-center justify-between">
                 <div className="flex flex-wrap gap-2">
