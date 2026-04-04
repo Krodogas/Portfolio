@@ -119,6 +119,30 @@
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply text-foreground;
+    background: linear-gradient(135deg, oklch(1 0 0) 0%, oklch(0.95 0.01 240) 100%);
+  }
+  
+  .dark body {
+    background: linear-gradient(135deg, oklch(0.13 0.028 261.692) 0%, oklch(0.18 0.025 270) 100%);
+  }
+  
+  /* Gradient backgrounds for sections */
+  section {
+    position: relative;
+    background: linear-gradient(135deg, transparent 0%, rgba(99, 102, 241, 0.05) 100%);
+  }
+  
+  .dark section {
+    background: linear-gradient(135deg, transparent 0%, rgba(129, 140, 248, 0.08) 100%);
+  }
+  
+  /* Alternating gradient patterns for visual interest */
+  section:nth-child(odd) {
+    background: linear-gradient(135deg, transparent 0%, rgba(168, 85, 247, 0.04) 100%);
+  }
+  
+  .dark section:nth-child(odd) {
+    background: linear-gradient(135deg, transparent 0%, rgba(168, 85, 247, 0.06) 100%);
   }
 }
