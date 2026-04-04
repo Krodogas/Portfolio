@@ -57,7 +57,7 @@ export function ContactForm() {
 						<div className="flex items-start gap-4">
 							<div className="mt-1">
 								<p className="font-semibold text-foreground">Email</p>
-								<p className="text-muted-foreground">gasolina.krodo@gmail.com</p>
+								<p className="text-muted-foreground">lefej.bb@gmail.com</p>
 							</div>
 						</div>
 						<div className="flex items-start gap-4">

@@ -28,7 +28,7 @@ export default function About() {
             </div>
 
             <div className="flex items-center gap-4">
-              <a href="#projects" className="inline-flex items-center px-4 py-2 rounded-md bg-muted/40 text-sm">View Projects</a>
+              <a href="projects" className="inline-flex items-center px-4 py-2 rounded-md bg-muted/40 text-sm">View Projects</a>
               <ResumeDownload />
             </div>
           </div>

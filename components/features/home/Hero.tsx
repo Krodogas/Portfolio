@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Github, Linkedin, Mail } from "lucide-react";
+import { ArrowRight, Facebook, Github, Linkedin, Mail } from "lucide-react";
 import { Section } from "@/components/common/Section";
 
 export function Hero() {
@@ -12,9 +12,9 @@ export function Hero() {
                     <div className="text-sm font-semibold uppercase tracking-widest text-muted-foreground">
                         Simple Developer & Designer
                     </div>
-                    <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-black tracking-tighter leading-none">
-                        Simple<br />
-                        Dev.
+                    <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-8xl font-black tracking-tighter leading-none">
+                        JEFEL A.<br />
+                        BAYUBAY
                     </h1>
                     <p className="max-w-150 text-muted-foreground text-base sm:text-lg md:text-xl">
                         Building beautiful digital experiences with modern technologies and clean code.
@@ -43,7 +43,10 @@ export function Hero() {
                         <Linkedin className="h-6 w-6" />
                         <span className="sr-only">LinkedIn</span>
                     </Link>
-
+                    <Link href="https://www.facebook.com/rightclickk" target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors">
+                        <Facebook className="h-6 w-6" />
+                        <span className="sr-only">Facebook</span>
+                    </Link>
                 </div>
             </div>
 

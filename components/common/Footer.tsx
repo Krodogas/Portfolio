@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Github, Instagram } from "lucide-react";
+import { Github, Instagram, Mail, Facebook } from "lucide-react";
 
 const quickLinks = [
   { href: "/", label: "Home" },
@@ -11,6 +11,7 @@ const quickLinks = [
 const socialLinks = [
   { href: "https://github.com/Krodogas", icon: Github, label: "GitHub" },
   { href: "https://www.instagram.com/jpil2.0?igsh=NXFoMGVscTdjaWU2", icon: Instagram, label: "Instagram" },
+  { href: "https://www.facebook.com/rightclickk", icon: Facebook, label: "Facebook" },
 ] as const;
 
 export function Footer() {
