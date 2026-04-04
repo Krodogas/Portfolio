@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
-import { Menu, X, Home, Briefcase, BookOpen, Mail } from "lucide-react";
+import { Menu, X, Home, Briefcase, BookOpen, Mail, User, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/common/ThemeToggle";
 
@@ -11,6 +11,7 @@ const navLinks = [
   { href: "/", label: "HOME", icon: Home },
   { href: "/projects", label: "PROJECTS", icon: Briefcase },
   { href: "/blog", label: "BLOGS", icon: BookOpen },
+  { href: "/about-me", label: "ABOUT", icon: User },
   { href: "/contact", label: "CONTACT", icon: Mail },
 ] as const;
 
@@ -56,7 +57,8 @@ export function Header() {
               })}
             </ul>
           </nav>
-
+ 
+          {/* (Resume button removed from header — available on About Me page) */}
           {/* Theme Toggle */}
           <ThemeToggle />
 
@@ -106,6 +108,7 @@ export function Header() {
                   </li>
                 );
               })}
+              {/* Resume removed from mobile menu */}
               <li className="mt-2 pt-2 border-t border-border">
                 <Link href="/contact" onClick={() => setOpen(false)}>
                   <Button size="sm" className="w-full justify-center">

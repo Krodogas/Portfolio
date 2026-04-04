@@ -24,12 +24,13 @@ export function BlogLandingContent() {
       <div className="flex flex-col gap-4 mb-16">
         <div className="inline-flex w-fit">
           <Badge className="mb-4 bg-foreground text-background hover:bg-foreground">
-            SECTION: BLOG HEADER
+            BLOG
           </Badge>
         </div>
-        <h1 className="text-4xl font-bold tracking-tight lg:text-5xl md:text-6xl">[HEADING: THOUGHTS & WRITINGS]</h1>
+        <h1 className="text-4xl font-bold tracking-tight lg:text-5xl md:text-6xl">Thoughts & Writings</h1>
         <p className="text-lg text-muted-foreground">
-          [TEXT AREA: Sharing insights on design, code, and life.]
+          Sharing short essays and tutorials on design, frontend development,
+          and practical web engineering.
         </p>
       </div>
 
@@ -49,7 +50,7 @@ export function BlogLandingContent() {
               <div className="grow">
                 <div className="space-y-2 mb-3">
                   <p className="text-sm text-muted-foreground">
-                    [DATE: {formatDate(post.date)}] • [READ TIME: {getReadTime(post.content)} MIN]
+                    {formatDate(post.date)} • {getReadTime(post.content)} min read
                   </p>
                   <h3 className="text-2xl font-bold group-hover:text-primary transition-colors uppercase">
                     {post.title}
@@ -59,7 +60,7 @@ export function BlogLandingContent() {
                   {post.excerpt}
                 </p>
                 <div className="flex items-center gap-2 text-primary font-medium text-sm">
-                  [LINK: READ MORE]
+                  <span className="underline">Read more</span>
                   <ExternalLink className="h-4 w-4" />
                 </div>
               </div>
